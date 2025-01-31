@@ -1,5 +1,11 @@
-let index = 1;
 let counter = 0;
+
+//need to fix counter and index mess
+//need a variable to keep track of img index
+//need another to calculate the new index
+//but the new index should be added to the previous index.
+//so maybe only need one variable. need to think this through.
+
 const image = document.querySelector("img");
 const prev = document.querySelector(".previous");
 const next = document.querySelector(".next");
@@ -14,7 +20,7 @@ function changeImage(value) {
     const imageContainer = document.querySelector(".images");
     clearDiv(imageContainer);
     const img = document.createElement("img");
-    counter = (index + value) % 3;
+    counter = (counter + value) % 3;
     if (counter === 1) {  
         img.src = "./images/img1.jpg";
         imageContainer.appendChild(img);
