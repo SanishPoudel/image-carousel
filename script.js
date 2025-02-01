@@ -1,12 +1,6 @@
-let counter = 0;
+let index = 0;
+displayImage(index);
 
-//need to fix counter and index mess
-//need a variable to keep track of img index
-//need another to calculate the new index
-//but the new index should be added to the previous index.
-//so maybe only need one variable. need to think this through.
-
-const image = document.querySelector("img");
 const prev = document.querySelector(".previous");
 const next = document.querySelector(".next");
 
@@ -16,11 +10,16 @@ function clearDiv(div) {
     }
 }
 
-function changeImage(value) {
+function displayImage(index) {
+    if (index < 0) {
+        index = index * -1;
+    }
+
     const imageContainer = document.querySelector(".images");
-    clearDiv(imageContainer);
     const img = document.createElement("img");
-    counter = (counter + value) % 3;
+    clearDiv(imageContainer);
+    let counter = index % 3;
+
     if (counter === 1) {  
         img.src = "./images/img1.jpg";
         imageContainer.appendChild(img);
@@ -33,6 +32,14 @@ function changeImage(value) {
     }
 }
 
-prev.addEventListener("click", changeImage(-1));
-next.addEventListener("click", changeImage(1));
+prev.addEventListener("click", ()=> {
+    index --;
+    displayImage(index);
+})
+
+next.addEventListener("click", ()=> {
+    index ++;
+    displayImage(index);
+})
+
 
